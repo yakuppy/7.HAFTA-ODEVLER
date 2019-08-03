@@ -1,0 +1,101 @@
+'''SORU 1: TELEFFON DEFTERI UYGULAMASI
+
+	Bu odevde bir telefon rehberi simulasyonu yapmanizi istiyoruz.
+	Program acildiginda kullaniciya, rehbere kisi ekleme, kisi silme, kisi isim ya da tel 	bilgisi 	guncelleme,
+	rehberi listeleme seceneklerini sunun. Kullanicinin secimine gore 	gerekli inputlarla 	programinizi sekillendirin.
+	Olusturulan rehberi bir dosyaya kaydedin.
+	Rehberi olustururken sozlukleri kullanin.'''
+import time
+while True:
+
+        head = ('''***********************************************************
+              1-)Rehbere Kisi Ekleme
+              2-)Rehberden Kisi Silme
+              3-)Bilgileri Guncelleme
+              4-)Tum Rehberi Listeleme
+              5-)Programdan Cikis icin "5" tusuna  basiniz
+***********************************************************''')
+
+        rehber = {"ahmet erkoc": "05357895265",
+                  "mehmet demir": "05257858965",
+                  "canan kilic": "05327281254",
+                  "yavuz ozturk": "05267824556"}
+
+        print(head)
+        secenek = input("Yapmak istediginiz islem numarasini seciniz    :")
+
+
+
+        if secenek=="5":
+            print("telefon rehberinden cikiliyor...")
+            time.sleep(2)
+            break
+
+        elif secenek=="1":
+
+            isim_soyisim=input("ismim bosluk soy isim giriniz  :")
+
+            if isim_soyisim in rehber:
+                print("bu isim var baska isimde olusturunuz")
+            else:
+                tel_no=input("telofon numarasi giriniz   :")
+
+
+                if isim_soyisim!="" and tel_no!="":
+                    liste={isim_soyisim:tel_no}
+                    rehber.update(liste)
+                    cevap = "{} adlı kişinin telefon numarası: {} rehbere eklendi"
+                    print(cevap.format(isim_soyisim, tel_no))
+                    print(rehber)
+
+                else:
+                    print("isim yada tel no bos birakilamaz")
+
+
+        elif secenek=="2":
+            isim_soyisim = input("ismim bosluk soy isim giriniz  :")
+            if not isim_soyisim in rehber:
+                print("boyle bir isim kayitli degil")
+            else:
+                print("telofon numarasi:",rehber[isim_soyisim])
+                cevap = "{} adlı kişinin telefon numarası: {} rehberden  siliniyor.."
+                print(cevap.format(isim_soyisim, rehber[isim_soyisim]))
+                time.sleep(1)
+                rehber.pop(isim_soyisim,rehber[isim_soyisim])
+                print("Yeni Telofon Rehberiniz    :",rehber)
+                time.sleep(1)
+
+        elif secenek=="3":
+            isim_soyisim = input("bilgilerini guncellemek istediginiz kisinin ,ismim bosluk soy isim giriniz  :")
+            print("telofon numarasi:", rehber[isim_soyisim])
+            rehber.pop(isim_soyisim, rehber[isim_soyisim])
+            yeni_ism_soyisim=input("yeni isim soy isim")
+            guncel_numara=input("guncel tel no :")
+            liste = {yeni_ism_soyisim: guncel_numara}
+            rehber.update(liste)
+
+            print("rehberiniz guncelleniyor....")
+            time.sleep(2)
+
+            print(rehber)
+
+        elif secenek=="4":
+            print(".......TELOFON REHBERINIZ.....")
+            time.sleep(1)
+            for i,j in rehber.items():
+                print(i,":",j)
+
+        dosya=open("rehber.txt","w")
+        dosya.write(str(rehber))
+        dosya.close()
+
+
+
+
+
+
+
+
+
+
+
