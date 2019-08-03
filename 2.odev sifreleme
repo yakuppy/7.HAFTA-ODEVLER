@@ -1,0 +1,58 @@
+'''
+SORU 2: ŞIFRELEME UYGULAMASI
+
+	Kullaniciya iki secenek sunarak orjinal metni sifreli metne ve
+sifreli metni orjinal metne 	donusturebilen bir program yazmanizi istiyoruz.
+Sozlukler yardimi ile bir sifreleme
+algoritmasi olusturun ve kullanicidan alacaginiz inputu bu algoritma yoluyla sifreleyin ve 	ekrana yazdirin.
+Kullanici daha sonra bu sifreli metni input olarak yazdiginda orjinal metne 	ulasabilsin. '''
+
+
+algoritma={'a': '!', 'b': '@', 'c': '#', 'd': '$',
+          'e': '%', 'f': '<', 'g': '>', 'h': '?',
+          'i': '_', 'j': '2', 'k': '4', 'l': '*',
+          'm': 'g', 'n': 'a','o': '}', 'p': 'F',
+          'q': 'r', 'r': 'D', 's': 'M', 't': 'C',
+          'u': 'J', 'x': 'é', 'w': '0', 'v': 'I',
+          'y': 'L', 'z': 'H'}
+
+print('''ASAGIDAKI SECENEKLERDEN BIRINIZ SECINIZ,
+      1-)SIFRELEME,
+      2-)SIFREYI COZUMLEME,
+      3-)CIKIS ICIN "3" E BASINIZ:''')
+
+
+
+
+
+while True:
+
+    secenek = input("SECIMINIZ     :")
+
+
+
+    if secenek=="1":
+        kelime = input("sifrelemek istediginiz keleimeyi giriniz:")
+        sifre = ""
+        for i in kelime:
+            sifre+=algoritma[i]
+        print("SIFRELI KELIME    :",sifre)
+
+    elif secenek=="2":
+        kelime = input("sifresini cozmek istediginiz keleimeyi giriniz:")
+        cozum = ""
+
+        for i in kelime:
+            for a, b in algoritma.items():
+                if i == b:
+                    cozum += a
+        print("SIFRESI COZULEN  KELIME    :", cozum)
+
+    elif secenek=="3":
+        print("sitemeden cikiliyor...")
+        break
+
+
+
+
+
